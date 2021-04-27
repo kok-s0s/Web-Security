@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-04-27 09:57:22
- * @LastEditTime: 2021-04-28 02:25:52
+ * @LastEditTime: 2021-04-28 02:44:44
  * @Description: record
 -->
 
@@ -146,7 +146,7 @@ Sending emails is not very difficult. You have to fill in some data and send it 
 Adobe PDF documents and Microsoft Word documents are also examples of things that support signing. The signature is also inside the same document as the data so there is some description on what is part of the data and what is part of the metadata. Governments usually send official documents with a PDF that contains a certificate.
 
 
-**task1**
+**task**
 ![](./images/weobgoat_files/005.png)
 
 [How to find modulus from a RSA public key?
@@ -193,3 +193,14 @@ print(crypt.crypt(str(passwd), salt))
 - 在按照题目要求执行`echo "U2FsdGVkX199jgh5oANElFdtCxIEvdEvciLi+v+5loE+VCuy6Ii0b+5byb5DXp32RPmT02Ek1pf55ctQN+DHbwCPiVRfFQamDmbHBUpD7as=" | openssl enc -aes-256-cbc -d -a -kfile default_secret `;此时会显示如下结果：**Leaving passwords in docker images is not so secure**。
 
 **总结**：外部的用户可以通过使用`docker`指令操作相应的容器，此时外部用户相当与该容器的`root`用户，外部用户可能会接触到些敏感信息。
+
+
+**Post quantum cryptography 后量子密码学**
+
+Google 
+
+[Post-quantum on Wikipedia](https://en.wikipedia.org/wiki/Post-quantum_cryptography)
+
+### Writing new lesson
+
+PASS!
