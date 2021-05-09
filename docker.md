@@ -1,9 +1,11 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-10 00:43:13
- * @LastEditTime: 2021-05-10 00:45:50
+ * @LastEditTime: 2021-05-10 00:46:41
  * @Description: how to use docker well?
 -->
+
+[Docker Guide Video](https://www.youtube.com/watch?v=pTFZFxd4hOI)
 
 docker 
 
