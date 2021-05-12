@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-04-28 09:17:19
- * @LastEditTime: 2021-04-29 18:45:44
+ * @LastEditTime: 2021-05-12 10:16:06
  * @Description: record
 -->
 
@@ -198,4 +198,38 @@ There are several different types of blind SQL injections: content-based and tim
 [视频解答](https://www.youtube.com/watch?v=GtsHoeIlSf8)
 
 ![](./images/webgoat-Injection/013.png)
+
+
+
+**Q&A**
+
+![](./images/webgoat-Injection/014.png)
+
+answer: D C B C D
+
+
+## SQL Injection (mitigation)
+
+[What is parameterized query?
+](https://stackoverflow.com/questions/4712037/what-is-parameterized-query)
+
+仿照03和04的part构造没有SQL注入漏洞的代码
+![](./images/webgoat-Injection/015.png)
+
+
+同理05,编写没有SQL注入漏洞的代码
+```java
+String userName = "kok-s0s";
+try {
+    Connection conn = DriverManager.getConnection(DBURL,DBUSER,DBPW);
+    PreparedStatement ps = conn.prepareStatement("SELECT * FROM users WHERE name = ?");
+    ps.setString(1, userName);
+    ResultSet results = ps.executeQuery();
+    System.out.println(results.next());
+} catch (Exception e) {
+    System.out.println("Oops. Something went wrong!");
+}
+```
+使用try/catch编写格式，在try里连接数据库，按Parameterized Queries（参数化查询）的方式进行编写Java代码。
+
 
