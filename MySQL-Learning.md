@@ -1,4 +1,6 @@
-## 数据库 导论
+## 初识 MySQL
+
+### 数据库 导论
 
 JavaEE：企业级开发 Web 需要
 
@@ -134,7 +136,7 @@ DQL 查询 query
 
 DCL 控制 control
 
-### 操作数据库
+## 操作数据库
 
 操作数据库 > 操作数据库中的表 > 操作数据库中表的数据
 
@@ -351,7 +353,48 @@ CHARSET=utf8
 character-set-server=utf8
 ```
 
-
-
 ### 修改删除表
 
+> 修改
+
+```sql
+-- 修改表名 ：ALTER TABLE 旧表名 RENAME AS 新表名
+ALTER TABLE teacher RENAME AS teacher1
+-- 增加表的字段 ：ALTER TABLE 表名 ADD 字段名 列属性
+ALTER TABLE teacher1 ADD age INT(11)
+
+-- 修改表的字段 （重命名，修改约束!）
+-- ALTER TABLE 表名 MODIFY 字段名 列属性[]
+ALTER TABLE teacher1 MODIFY age VARCHAR(11) -- 修改约束
+--  ALTER TABLE 表名 CHANGE 旧名字 新名字 列属性[]
+ALTER TABLE teacher1 CHANGE age age1 INT(i) -- 字段重命名
+
+-- 删除表的字段 ：ALTER TABLE 表名 DROP 字段名
+ALTER TABLE teacher1 DROP age1
+```
+
+> 删除
+
+```sql
+-- 删除表（如果表存在再删除）
+DROP TABLE IF EXISTS teacher1
+```
+
+**所有的创建和删除操作尽量加上判断，以免报错！**
+
+Tips：
+
+- ``字段名，使用这个包裹！
+- 注释 -- or `/* */`
+- sql 关键字大小写不敏感，建议使用小写
+
+## MySQL 数据管理
+
+### 外键
+
+约束 constraint
+
+
+### DML 语言 （Important）
+
+###
