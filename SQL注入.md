@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-10 20:07:07
- * @LastEditTime: 2021-05-17 00:34:56
+ * @LastEditTime: 2021-05-19 23:03:58
  * @Description: file content
 -->
 
@@ -20,3 +20,12 @@ eg：简单绕过
 select * from student where name = "aa" and 1=1 -"";
 ```
 
+小技巧：
+`inurl:php?id=` php 页面匹配
+
+**联合查询注入**
+union
+
+**绕过**
+大小写尝试
+and so on
