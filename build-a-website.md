@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-18 02:29:30
- * @LastEditTime: 2021-05-19 00:28:02
+ * @LastEditTime: 2021-05-20 00:41:24
  * @Description: website
 -->
 
@@ -54,7 +54,7 @@ services:
 
 运行脚本命令：docker-compose -f docker-compose.yml up -d
 
-此时，在浏览器访问你的网站 IP 地址，你会看到 WordPress 的安装引导，格局提示进行就行了。
+此时，在浏览器访问你的网站 IP 地址，你会看到 WordPress 的安装引导，根据提示进行就行了。
 
 之后便可自定义出你自己专属的网站了！
 
