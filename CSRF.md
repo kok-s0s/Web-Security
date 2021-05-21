@@ -1,0 +1,9 @@
+<!--
+ * @Author: kok-s0s
+ * @Date: 2021-05-21 12:45:58
+ * @LastEditTime: 2021-05-21 12:50:02
+ * @Description: CSRF
+-->
+
+CSRF（Cross Site Request Forgery）跨站请求伪造
+攻击者到用你的身份，以你的名义发送恶意请求
