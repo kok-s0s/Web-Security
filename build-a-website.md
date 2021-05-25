@@ -10,7 +10,7 @@ docker vps wordPress
 
 利用你选择的工具(xshell，VSCode，and so on)远程连接你的云服务器；
 
-连接 update 过后，下载 docker.io 和 docker-compose；
+连接 update 过后，下载 `docker.io` 和 `docker-compose`；
 
 **配置**
 编写一个脚本 yml 格式，便于安装所有必须软件，我这里提供一个简易的脚本：
@@ -53,7 +53,7 @@ services:
 
 想要备份，只要把你服务器里的 www，docker-compose.yml，db 三个东西拷贝下来就行了，想要再次使用，只需要在有和上述大致差不多配置的服务器也可以再次运行起来。
 
-关闭很简单，执行命令：docker-compose -f docker-compose down
+关闭很简单，执行命令：docker-compose -f docker-compose.yml down
 
 ## 测试 HTTP 网站
 
@@ -90,6 +90,8 @@ curl http://139.180.195.153/
 
 我能看到自己的账号密码，这直接说明使用 http 的网站是有多大风险。【doge】！！！
 
+~~当你看到该文章，我已关闭我搭建的 http 网站，禁止 attack！~~
+
 ---
 
 ## 测试 HTTPS 网站
@@ -113,3 +115,37 @@ tcpdump 监听抓取[数据包](./files/WireShark-Files/blog-https.pcap)
 ![](./images/build-a-website/007.png)
 
 抓取到的数据包都被加密了，无法查看明文信息，更不用说能检索到`login`字符串了。网站的安全性相较 http 的网站是大大提高的。
+
+---
+
+## 全站 HTTPS 策略
+
+该策略主要针对开发者。
+
+对于一个网站来说，部署 HTTPS 网站并不代表绝对的安全，HTTPS 只是保证某个连接上请求数据的安全性，但 Web 页面由许多元素构成，如果只有主页面支持 HTTPS 是不够的，所有引用的元素也必须支持 HTTPS，否则就会引发 Web 安全风险。
+
+eg：如下图的情况
+
+![](./images/build-a-website/008.png)
+
+![](./images/build-a-website/009.png)
+
+为保证一个网站的绝对安全，应实施全站 HTTPS 策略：
+
+- 网站涉及的域名必须都配置证书，并启用 HTTPS。
+- 网站引用的所有元素，必须支持 HTTPS。
+- 暴露在互联网上的 HTTP URL 地址，必须重定向到 HTTPS 请求上。
+
+全站 HTTPS 策略相关技术：
+
+- 使用 301，302 重定向技术。
+- 使用 HSTS 技术，相较 301 重定向，更保证安全性。
+- 使用其它的 HTTP 头部，比如`Content-Security-Policy`。
+
+**Question**
+
+如果一个网站的登录系统没改，只是改了 https，情况会如何？
+
+**Answer**
+
+这说明登陆系统相关域名和关联的元素都是 HTTP 的，域名没有启用 HTTPS 和元素不支持 HTTPS，那么攻击者完全可以进行监听该网站，查看别人发送过来的请求信息是否有非 HTTPS 的，如果有一个该登录系统的管理者要登录该系统，发送有`login`信息的请求包，攻击者监听该数据包，因为该请求包的信息是明文，能直接获取到账户密码的信息。攻击者就也可以作为一个管理员的身份登录到该网站的管理后台了。攻击者也能进行更多隐私管理操作。
