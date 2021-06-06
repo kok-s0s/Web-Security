@@ -392,9 +392,70 @@ Tips：
 
 ### 外键
 
+[URL](https://my.oschina.net/sallency/blog/465079)
 约束 constraint
 
+方式一：在创建表的时候，增加约束（麻烦，复杂）
+
+删除有外键关系的表的时候，必须要先删除引用别人的表（从表），再删除被引用的表（主表）。
+
+方式二：创建表成功后，创建表约束。
+
+```sql
+alter table `student`
+add constraint `fk_gradeid` foreign key(`gradeid`) references `grade`(`gradeid`);
+-- alter table 表 add constraint 约束名 foreign key(作为外键的列) references 哪个表（哪个字段）
+```
+
+这两种方式都是创建物理外键，属于数据库级别的外键，不推荐使用（避免数据库过多而造成困扰）。
+
+**最佳选择**
+
+- 数据库就是单纯的表，只用来存储数据，只有行（数据）和列（字段）。
+- 想使用多张表的数据，即想使用外键（利用程序实现）。
 
 ### DML 语言 （Important）
 
-### 
+数据库意义：数据存储，数据管理。
+
+- insert
+- update
+- delete
+
+### 添加
+
+> insert
+
+```sql
+-- 插入语句（添加）
+-- insert into 表名([字段名1,字段名2,字段名3,...]) value('值1'),('值2'),('值3',......)
+insert into `grade`(`gradename`) values('大四')
+
+-- 由于主键自增，因此可以省略（如果不写表的字段，它就会一一匹配）
+insert into `grade` values（'大三'）
+
+-- 一般写插入语句，数据和字段一定要一一对应！
+
+-- 插入多个字段
+insert into `grade`(`gradename`) values('大二')('大一')
+
+
+insert into `student`(`name`) values('路人甲')
+
+insert into `student`(`name`,`pwd`,`sex`) values('路人乙','aaaaa','男')
+
+INSERT INTO `student`(`name`,`pwd`,`sex`)
+VALUES('路人丙','bbbbb','男'),('who','ccccc','女')
+```
+
+注意事项：
+
+1. 字段和字段之间用英文逗号隔开。
+2. 字段是可以省略的，但是后面的值必须要是一一对应的，且无法省略。
+3. 可以同时插入多条数据，values 后面的值，需要使用逗号隔开。
+
+### 修改
+
+> update 需要满足某些条件才能进行修改
+
+### 删除
