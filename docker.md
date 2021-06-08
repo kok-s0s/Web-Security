@@ -18,7 +18,7 @@ docker images
 
 docker rm $(docker ps -a -q)
 
-dcoker rmi $(docker images -q)
+docker rmi $(docker images -q)
 
 docker stop id
 
