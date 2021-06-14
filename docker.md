@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-10 00:43:13
- * @LastEditTime: 2021-05-30 15:47:36
+ * @LastEditTime: 2021-06-13 12:53:26
  * @Description: how to use docker well?
 -->
 
@@ -37,7 +37,6 @@ docker pull 'something you want to get'
 # 文件映射
 # eg
 docker run -it -p 127.0.0.1:8080:80 -v /Users/kok-s0s/Desktop/csrf/:/usr/local/apache2/htdocs/ httpd
-
 
 ```
 
@@ -94,8 +93,34 @@ docker pull webgoat/webgoat-8.0
 ```
 
 VSCode---docker 插件
-选择`open in brower`
-登录网页：`http://localhost:8080/WebGoat/login`
+选择 `open in brower`
+
+登录网页： `http://localhost:8080/WebGoat/login`
 
 账号：kok-s0s
 密码：kok-s0s
+
+--- 
+
+`exec` 命令
+
+输入 `docker exec --help` 查看用法。
+
+```
+Usage:  docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+
+Run a command in a running container
+
+Options:
+  -d, --detach               Detached mode: run command in the background
+      --detach-keys string   Override the key sequence for detaching a container
+  -e, --env list             Set environment variables
+      --env-file list        Read in a file of environment variables
+  -i, --interactive          Keep STDIN open even if not attached
+      --privileged           Give extended privileges to the command
+  -t, --tty                  Allocate a pseudo-TTY
+  -u, --user string          Username or UID (format: <name|uid>[:<group|gid>])
+  -w, --workdir string       Working directory inside the container
+```
+
+使用 `docker exec -it 69d1 bash` 能够直接使用终端模式进入到容器中。
